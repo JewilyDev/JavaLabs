@@ -52,8 +52,8 @@ public class Homework {
     {
         System.out.println("3. Поиск сокровищ");
         Scanner in = new Scanner(System.in);
-        int x = in.nextInt();
-        int y = in.nextInt();
+        int x =  Integer.parseInt(in.next());
+        int y = Integer.parseInt(in.next());
         ArrayList<String> directions = new ArrayList<String>();
         ArrayList<Integer> stepsAmount = new ArrayList<Integer>();
         while(true) {
@@ -70,21 +70,41 @@ public class Homework {
         int current_x = 0;
         int current_y = 0;
         int counter = 0;
-        while (current_x != x && current_y != y)
+        while (current_x != x || current_y != y)
         {
             if(counter < directions.size() && counter < stepsAmount.size()) {
                 String direction = directions.get(counter);
                 int steps = stepsAmount.get(counter);
                 switch (direction) {
-                    case "север" -> current_y += steps;
-                    case "юг" -> current_y -= steps;
-                    case "восток" -> current_x += steps;
-                    case "запад" -> current_x -= steps;
+                    case ("север"):
+                    {
+                        if(current_y != y){
+                            current_y += steps;
+                        }
+                    }
+                    case ("юг"):
+                    {
+                        if(current_y != y){
+                            current_y -= steps;
+                        }
+                    }
+                    case ("запад"):
+                    {
+                        if(current_x != x){
+                            current_x -= steps;
+                        }
+                    }
+                    case ("восток"):
+                    {
+                        if(current_x != x){
+                            current_x += steps;
+                        }
+                    }
                 }
             }
             counter++;
         }
-        System.out.println(counter + 1);
+        System.out.println(counter);
     }
 
     public static void LogisticalMaximin()
